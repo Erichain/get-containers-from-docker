@@ -1,7 +1,17 @@
 package main
 
-import "fmt"
+import(
+	"fmt"
+	"net/http"
+	"runtime"
+)
 
-func main() {
-	fmt.Println("This")
+func indexHandler( w http.ResponseWriter, r *http.Request){
+	fmt.Fprintf(w, "hello world, I'm running on %s with an %s CPU ", runtime.GOOS,runtime.GOARCH)
+
+}
+
+func main(){
+	http.HandleFunc("/", indexHandler)
+	http.ListenAndServe(":8080",nil)
 }
