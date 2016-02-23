@@ -8,3 +8,4 @@ dist/
 *.o
 .idea/
 .DS_store
+main
